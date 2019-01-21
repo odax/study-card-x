@@ -4,7 +4,7 @@ export default class ResponseButtons extends Component {
   render() {
     return (
       <div>
-        Testing
+        Buttons
       </div>
     )
   }
