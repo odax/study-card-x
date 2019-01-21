@@ -32,6 +32,12 @@ export class AppContextProvider extends Component {
       })
     };
 
+  // handleChangeState = ( stateKey, value ) => {
+  //   this.setState({
+  //     {${stateKey}: value
+  //   })
+  // };
+
   render() {
     return (
       <AppContext.Provider
