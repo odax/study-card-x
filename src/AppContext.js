@@ -23,6 +23,15 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
+    buttons: [
+      {
+        type: 'twoButtons',
+        button1Text: '',
+        button1OnClickMethod: '',
+        button2Text: '',
+        button2OnClickMethod: '',
+      }
+    ]
     voiceState: greeting
   };
   //methods here
