@@ -6,7 +6,6 @@
     "particlesjs": "^2.2.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-pose": "^4.0.5",
     "react-scripts": "2.1.3"
   },
   "scripts": {
