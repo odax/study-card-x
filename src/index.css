@@ -46,6 +46,10 @@ table {
 border-collapse: collapse;
 border-spacing: 0;
 }
+html {
+  height: 100%;
+  border: 1px solid teal;
+};
 body {
   margin: 0;
   padding: 0;
@@ -59,4 +63,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+body {
+  height: 100%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
