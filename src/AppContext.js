@@ -31,7 +31,7 @@ export class AppContextProvider extends Component {
         button2Text: '',
         button2OnClickMethod: '',
       }
-    ]
+    ],
     voiceState: greeting
   };
   //methods here
