@@ -5,8 +5,8 @@ import './Voice_AI.css';
 export default class Voice_AI extends Component {
   render() {
     return (
-      <div className='Voice_AI__Text'>
-        <TextyAnim>{this.props.contextState.voiceState.greeting}</TextyAnim>
+      <div>
+        <TextyAnim className='Voice_AI__Text' duration='1'>{this.props.contextState.voiceState.greeting}</TextyAnim>
       </div>
     );
   }
