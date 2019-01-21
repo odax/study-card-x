@@ -1,9 +1,41 @@
-export default {
-    greeting: 'Welcome to Study Card X, have you been here before?',
-    no: 'Would you like to create an account or practice as a guest?',
-    guest: 'Okay, would you like a quick tutorial?',
-    yes: 'Sweet, tell me a little about yourself..'
-}
+export default [
+    {
+        collection: 'intro',
+        identity: 'greeting',
+        text: 'Welcome to Study Card X, do you have an account?',
+        btnType: 'two',
+        btn1: 'Yes',
+        btn1call: ['yes', 'intro'],
+        btn2: 'No',
+        btn2call: ['no', 'intro']
+    },
+    {
+        collection: 'intro',
+        identity: 'no',
+        text: 'Would you like to create an account or practice as a guest?',
+        btnType: 'two',
+        btn1: 'Create Account',
+        btn1call: ['yes', 'intro'],
+        btn2: 'Guest',
+        btn2call: ['guest', 'intro']
+    },
+    {
+        collection: 'intro',
+        identity: 'tutorial',
+        text: 'Okay, would you like a quick tutorial?',
+        btnType: 'two',
+        btn1: 'Yeah',
+        btn1call: ['new1a9', 'newUser']
+    },
+    {
+        collection: "intro",
+        identity: 'signup',
+        text: 'Sweet, tell me a little about yourself..',
+        btnType: 'none',
+        form: 'signup',
+        submit: ['handleSignUp'] //add more for when signup is complete
+    }
+]
 
 export const newUser = {
     new1a9: 'This will only take 1 minute',
