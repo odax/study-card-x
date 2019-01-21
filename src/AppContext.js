@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+//import voice
+import greeting from './Voice';
+import newUser from './Voice';
+import oldUser from './voice';
+import guestStudy from './voice';
+
 //create new context
 const AppContext = React.createContext();
 
@@ -16,13 +22,22 @@ export class AppContextProvider extends Component {
         difficulty: 'easy',
         mastered: false
       }
-    ]
+    ],
+    voiceState: greeting
   };
   //methods here
-  thisIsStateChecker = () => {
-      console.log("We have state!");
-    }
-    
+  handleChangeVoiceState = (newState) => {
+      this.setState({
+        voiceState: newState 
+      })
+    };
+
+  // handleChangeState = ( stateKey, value ) => {
+  //   this.setState({
+  //     {${stateKey}: value
+  //   })
+  // };
+
   render() {
     return (
       <AppContext.Provider
