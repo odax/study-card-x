@@ -1,4 +1,4 @@
-export const greeting = {
+export default {
     greeting: 'Welcome to Study Card X, have you been here before?',
     no: 'Would you like to create an account or practice as a guest?',
     guest: 'Okay, would you like a quick tutorial?',

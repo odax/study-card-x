@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 //import voice
 import greeting from './Voice';
 import newUser from './Voice';
-import oldUser from './voice';
-import guestStudy from './voice';
+import oldUser from './Voice';
+import guestStudy from './Voice';
 
 //create new context
 const AppContext = React.createContext();
