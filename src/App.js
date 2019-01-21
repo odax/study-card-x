@@ -5,9 +5,17 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-
-      </div>
+      <AppContextConsumer>
+        {value => (
+          <div className="App">
+            {value.AppState.thisIsState ? (
+              <div>Hi</div>
+            ) : (
+              <div>Bye</div>
+            )}
+          </div>
+        )}
+      </AppContextConsumer>
     );
   }
 }
