@@ -20,7 +20,7 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
-    visibleButtons: true,
+    visibleButtons: false,
     currentIdentity: 'greeting',
     preset: presets,
     initializing: true
@@ -41,7 +41,7 @@ export class AppContextProvider extends Component {
   handleChangeState = ( stateKey, value ) => {
     this.setState({
       [stateKey]: value
-    });
+    }, console.log('Calling handleChangeState'));
   };
 
   render() {
