@@ -8,8 +8,7 @@ export default class ResponseButtons extends Component {
     btn1: "",
     btn1next: "",
     btn2: "",
-    btn2next: "",
-    nextIdentity: "",
+    btn2next: ""
   };
   componentDidUpdate = () => {
       console.log('Console Log for componentDidUpdate for ResponseButtons');
@@ -25,7 +24,7 @@ export default class ResponseButtons extends Component {
           btn2: preset.greeting.btn2,
           btn2next: preset.greeting.btn2next,
           btnType: preset.greeting.btnType,
-          visibleButtons: visibleButtons 
+          visibleButtons: visibleButtons,
         },
         console.log('Console Log after setState of ComponentDidMount for ResponseButton')
       );
@@ -33,19 +32,21 @@ export default class ResponseButtons extends Component {
   };
 
   //Need to create button click handler
-
+  handleButtonClick = clickType => {
+      console.log(clickType, 'button clicked!!!!!');
+  } 
   //current phrase identity is preset in context -done
   //componentDidMount will update state with first buttons, -done
-  //after speech is done voice_ai will update context with visible: true
-  //buttons become visible
+  //after speech is done voice_ai will update context with visible: true -done
+  //buttons become visible -done
   //onclick current phrase identity is updated in the context
   //visibility for buttons is turned off -done
   //new buttons are set to state in this component
   //new phrase is spoken
   //buttons are triggered to appear... repeat
 
-  HandleUpdateContext = () => {
-    this.props.contextState.HandleChangeState("name", "nalee");
+  HandleUpdateContext = (item1, item2) => {
+    this.props.contextState.HandleChangeState(item1, item2);
   };
   render() {
       let buttons;
@@ -58,10 +59,10 @@ export default class ResponseButtons extends Component {
             buttons = (
                 //button visibility needs to be read straight off of the context state because this state has no means to update when that one changes
                 <div className='ResponseButtons__ButtonContainer' style={{'visibility': (this.props.contextState.AppState.visibleButtons ? 'visible' : 'hidden')}}>
-                <button className="waves-effect waves-light btn-small">
+                <button className="waves-effect waves-light btn-small" onClick={() => {this.handleButtonClick(this.state.btn1next)}}>
                     {this.state.btn1}
                 </button>
-                <button className="waves-effect waves-light btn-small">
+                <button className="waves-effect waves-light btn-small" onClick={() => {this.handleButtonClick(this.state.btn2next)}}>
                     {this.state.btn2}
                 </button>
                 </div>

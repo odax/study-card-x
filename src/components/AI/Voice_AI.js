@@ -23,7 +23,6 @@ AnimatedTypingComponent = () => {
     return (
       <div>
           <this.AnimatedTypingComponent />
-          <span>Name: {this.props.contextState.name}</span> 
       </div>
     );
   }
