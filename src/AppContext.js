@@ -22,7 +22,8 @@ export class AppContextProvider extends Component {
     ],
     displayButtons: false,
     currentIdentity: 'greeting',
-    preset: presets
+    preset: presets,
+    initializing: true
   };
   //methods here
   handleChangeVoiceState = (newState) => {

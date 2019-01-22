@@ -1,30 +1,36 @@
 export default {
     greeting: {
+        identity: 'greeting',
         collection: 'intro',
         text: 'Welcome to Study Card X, do you have an account?',
         btnType: 'two',
         btn1: 'Yes',
-        btn1call: ['yes', 'intro'],
+        btn1next: 'login',
         btn2: 'No',
-        btn2call: ['no', 'intro']
+        btn2next: 'no'
     },
     no: {
+        identity: 'no',
         collection: 'intro',
         text: 'Would you like to create an account or practice as a guest?',
         btnType: 'two',
         btn1: 'Create Account',
-        btn1call: ['yes', 'intro'],
+        btn1next: 'signup',
         btn2: 'Guest',
-        btn2call: ['guest', 'intro']
+        btn2next: 'guestTutorial',
     },
-    tutorial: {
+    guestTutorial: {
+        identity: 'tutorial',
         collection: 'intro',
         text: 'Okay, would you like a quick tutorial?',
         btnType: 'two',
         btn1: 'Yeah',
-        btn1call: ['new1a9', 'newUser']
+        btn1next: 'new1a9',
+        btn2: 'Nope, I think Ill manage',
+        btn2next: 'startStudy'
     },
     signup: {
+        identity: 'signup',
         collection: "intro",
         text: 'Sweet, tell me a little about yourself..',
         btnType: 'none',
