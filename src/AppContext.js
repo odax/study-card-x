@@ -20,7 +20,7 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
-    displayButtons: false,
+    visibleButtons: true,
     currentIdentity: 'greeting',
     preset: presets,
     initializing: true
