@@ -12,7 +12,7 @@ export default class ResponseButtons extends Component {
     nextIdentity: ""
   };
   componentDidUpdate = () => {
-      console.log('after update', this.state);
+      console.log('Console Log for componentDidUpdate for ResponseButtons');
   }
   componentDidMount = () => {
     const { preset } = this.props.contextState.AppState;
@@ -26,7 +26,7 @@ export default class ResponseButtons extends Component {
           btn2next: preset.greeting.btn2next,
           btnType: preset.greeting.btnType
         },
-        console.log('can call something here')
+        console.log('Console Log after setState of ComponentDidMount for ResponseButton')
       );
     }
   };
@@ -45,12 +45,22 @@ export default class ResponseButtons extends Component {
     this.props.contextState.HandleChangeState("name", "nalee");
   };
   render() {
+      let buttons;
       switch(this.state.btnType) {
           case '':
           console.log('no buttons!');
           break;
           case 'two':
-          console.log('two buttons!');
+            buttons = (
+                <div className='ResponseButtons__ButtonContainer'>
+                <button className="waves-effect waves-light btn-small">
+                    {this.state.btn1}
+                </button>
+                <button className="waves-effect waves-light btn-small">
+                    {this.state.btn2}
+                </button>
+                </div>
+            );
           break;
           default:
           return null;
@@ -60,12 +70,7 @@ export default class ResponseButtons extends Component {
     return (
       //when displaying button make sure to add visibility: this.state.display
       <div>
-        <button
-          className="waves-effect waves-light btn-small"
-          onClick={this.HandleUpdateContext}
-        >
-          Change name to nalee
-        </button>
+        {buttons}
       </div>
     );
   }
