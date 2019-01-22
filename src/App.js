@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { AppContextConsumer } from "./AppContext";
 import AiVoice from "./components/AI/Voice_AI";
+import ResponseButtons from "./components/ResponseButtons/ResponseButtons";
 import "./App.css";
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
       <AppContextConsumer>
         {value => (
           <div className="App">
-            <AiVoice contextState = {value.AppState}/>
+            <AiVoice contextState = {value}/>
+            <ResponseButtons contextState = {value}/>
           </div>
         )}
       </AppContextConsumer>

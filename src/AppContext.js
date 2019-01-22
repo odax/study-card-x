@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 //import voice
-import greeting from './Voice';
-import newUser from './Voice';
-import oldUser from './Voice';
-import guestStudy from './Voice';
+import presets from './Voice';
 
 //create new context
 const AppContext = React.createContext();
@@ -23,7 +20,10 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
-    voiceState: greeting
+    visibleButtons: false,
+    currentIdentity: 'greeting',
+    preset: presets,
+    initializing: true
   };
   //methods here
   handleChangeVoiceState = (newState) => {
@@ -32,18 +32,25 @@ export class AppContextProvider extends Component {
       })
     };
 
-  // handleChangeState = ( stateKey, value ) => {
-  //   this.setState({
-  //     {${stateKey}: value
-  //   })
-  // };
+    handleChangeName = (name) => {
+      this.setState({
+        name: name 
+      })
+    };
+
+  handleChangeState = ( stateKey, value ) => {
+    this.setState({
+      [stateKey]: value
+    }, console.log('Calling handleChangeState'));
+  };
 
   render() {
     return (
       <AppContext.Provider
         value={{
           AppState: this.state,
-          checkHaveState: this.thisIsStateChecker
+          HandleChangeState: this.handleChangeState,
+          HandleChangeName: this.handleChangeName
         }}
       >
         {this.props.children}
