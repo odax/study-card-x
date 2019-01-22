@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 //import voice
-import greeting from './Voice';
-import newUser from './Voice';
-import oldUser from './Voice';
-import guestStudy from './Voice';
+import presets from './Voice';
 
 //create new context
 const AppContext = React.createContext();
@@ -23,17 +20,9 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
-    buttons: {
-      display: false,
-      types: [{
-        type: 'twoButtons',
-        button1Text: '',
-        button1OnClickMethod: '',
-        button2Text: '',
-        button2OnClickMethod: '',
-      }]
-  },
-    voiceState: greeting
+    displayButtons: false,
+    currentIdentity: 'greeting',
+    preset: presets
   };
   //methods here
   handleChangeVoiceState = (newState) => {

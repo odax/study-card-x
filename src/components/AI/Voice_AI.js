@@ -9,7 +9,7 @@ export default class Voice_AI extends Component {
 AnimatedTypingComponent = () => {
     return (
     <Typing>
-        <span>{this.props.contextState.voiceState[0].text}</span>
+        <span>{this.props.contextState.preset.greeting.text}</span>
     </Typing>
     )
 }
