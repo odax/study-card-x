@@ -2,27 +2,26 @@ import React, { Component } from "react";
 import "./Voice_AI.css";
 
 //import dependencies
-import Typing from 'react-typing-animation';
+import Typing from "react-typing-animation";
 
 export default class Voice_AI extends Component {
-
-handleFinishTextAnimation = () => {
+  handleFinishTextAnimation = () => {
     const { HandleChangeState } = this.props.contextState;
-    HandleChangeState('visibleButtons', true);
-}
+    HandleChangeState("visibleButtons", true);
+  };
 
-AnimatedTypingComponent = () => {
+  AnimatedTypingComponent = () => {
     return (
-    <Typing onFinishedTyping={this.handleFinishTextAnimation}>
+      <Typing onFinishedTyping={this.handleFinishTextAnimation}>
         <span>{this.props.contextState.AppState.preset.greeting.text}</span>
-    </Typing>
-    )
-}
+      </Typing>
+    );
+  };
 
   render() {
     return (
       <div>
-          <this.AnimatedTypingComponent />
+        <this.AnimatedTypingComponent />
       </div>
     );
   }
