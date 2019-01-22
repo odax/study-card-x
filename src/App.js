@@ -11,7 +11,7 @@ class App extends Component {
         {value => (
           <div className="App">
             <AiVoice contextState = {value.AppState}/>
-            <ResponseButtons contextState = {value.AppState}/>
+            <ResponseButtons contextState = {value}/>
           </div>
         )}
       </AppContextConsumer>

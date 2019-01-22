@@ -23,15 +23,16 @@ export class AppContextProvider extends Component {
         mastered: false
       }
     ],
-    buttons: [
-      {
+    buttons: {
+      display: false,
+      types: [{
         type: 'twoButtons',
         button1Text: '',
         button1OnClickMethod: '',
         button2Text: '',
         button2OnClickMethod: '',
-      }
-    ],
+      }]
+  },
     voiceState: greeting
   };
   //methods here
@@ -41,18 +42,25 @@ export class AppContextProvider extends Component {
       })
     };
 
-  // handleChangeState = ( stateKey, value ) => {
-  //   this.setState({
-  //     {${stateKey}: value
-  //   })
-  // };
+    handleChangeName = (name) => {
+      this.setState({
+        name: name 
+      })
+    };
+
+  handleChangeState = ( stateKey, value ) => {
+    this.setState({
+      [stateKey]: value
+    });
+  };
 
   render() {
     return (
       <AppContext.Provider
         value={{
           AppState: this.state,
-          checkHaveState: this.thisIsStateChecker
+          HandleChangeState: this.handleChangeState,
+          HandleChangeName: this.handleChangeName
         }}
       >
         {this.props.children}
