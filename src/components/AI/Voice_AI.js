@@ -63,7 +63,7 @@ export default class Voice_AI extends Component {
       )
     }
     return (
-      <div>
+      <div className='Voice_AI__Text'>
         {textHolder}
       </div>
     );

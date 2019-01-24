@@ -14,6 +14,11 @@ export default class ResponseButtons extends Component {
     const { AppState } = this.props.contextState;
     const { preset, currentIdentity } = AppState;
     console.log("Console Log for componentDidUpdate for ResponseButtons");
+    if (this.state.visibleButtons !== AppState.visibleButtons) {
+      this.setState({
+        visibleButtons: AppState.visibleButtons
+      })
+    };
     if (this.state.identity !== AppState.currentIdentity) {
       this.setState({
         //maybe a case here to control what the state looks like depending on identity?
@@ -53,6 +58,9 @@ export default class ResponseButtons extends Component {
   handleButtonClick = clickType => {
     const { HandleChangeState } = this.props.contextState;
     HandleChangeState('visibleButtons', false);
+    this.setState({
+      visibleButtons: false
+    })
     switch(clickType) {
       case 'no':
         HandleChangeState('currentIdentity', clickType);
@@ -88,7 +96,7 @@ export default class ResponseButtons extends Component {
           <div
             className="ResponseButtons__ButtonContainer"
             style={{
-              visibility: this.props.contextState.AppState.visibleButtons
+              visibility: this.state.visibleButtons
                 ? "visible"
                 : "hidden"
             }}
