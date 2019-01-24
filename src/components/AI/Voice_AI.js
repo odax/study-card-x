@@ -16,7 +16,8 @@ export default class Voice_AI extends Component {
     if (initializing === true) {
       this.setState({
         localText: preset.greeting.text,
-        localIdentity: preset.greeting.identity
+        localIdentity: preset.greeting.identity,
+        updating: false,
       })
     }
   };
@@ -24,8 +25,14 @@ export default class Voice_AI extends Component {
   componentDidUpdate = () => {
     //keep in mind that currentIdentity below is the new identity that will cause this text to update
     const { currentIdentity, preset } = this.props.contextState.AppState;
+    if (this.state.updating === true) {
+      this.setState({
+        updating: false
+      })
+    }
     if (this.state.localIdentity !== currentIdentity) {
       this.setState({
+        updating: true,
         localText: preset[currentIdentity].text,
         localIdentity: currentIdentity
       });
@@ -47,10 +54,17 @@ export default class Voice_AI extends Component {
   };
 
   render() {
+    let textHolder;
+    if (this.state.updating) {
+      textHolder = null;
+    } else {
+      textHolder = (
+        <this.AnimatedTypingComponent />
+      )
+    }
     return (
       <div>
-        <this.AnimatedTypingComponent />
-        {this.state.localText}
+        {textHolder}
       </div>
     );
   }
