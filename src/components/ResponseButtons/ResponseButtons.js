@@ -2,16 +2,31 @@ import React, { Component } from "react";
 
 export default class ResponseButtons extends Component {
   state = {
-    display: false,
     identity: "",
     btnType: "",
     btn1: "",
     btn1next: "",
     btn2: "",
-    btn2next: ""
+    btn2next: "",
+    visibleButtons: ""
   };
   componentDidUpdate = () => {
+    const { AppState } = this.props.contextState;
+    const { preset, currentIdentity } = AppState;
     console.log("Console Log for componentDidUpdate for ResponseButtons");
+    if (this.state.identity !== AppState.currentIdentity) {
+      this.setState({
+        //maybe a case here to control what the state looks like depending on identity?
+        identity: currentIdentity,
+        btnType: preset[currentIdentity].btnType,
+        btn1: preset[currentIdentity].btn1,
+        //I get the feeling that since we have the case handler below, we don't need to really use these next states, but they will help with scalability
+        btn1next: preset[currentIdentity].btn1next,
+        btn2: preset[currentIdentity].btn2,
+        btn2next: preset[currentIdentity].btn2next
+      })
+      console.log('updated state', this.state);
+    }
   };
   componentDidMount = () => {
     const { preset, visibleButtons } = this.props.contextState.AppState;
@@ -34,8 +49,18 @@ export default class ResponseButtons extends Component {
   };
 
   //Need to create button click handler
+  //handler will have responses to hardcorded cases
   handleButtonClick = clickType => {
-    console.log(clickType, "button clicked!!!!!");
+    const { HandleChangeState } = this.props.contextState;
+    HandleChangeState('visibleButtons', false);
+    switch(clickType) {
+      case 'no':
+        HandleChangeState('currentIdentity', clickType);
+        console.log('no!');
+        break;
+      default:
+      return null;
+    }
   };
   //current phrase identity is preset in context -done
   //componentDidMount will update state with first buttons, -done
@@ -43,7 +68,7 @@ export default class ResponseButtons extends Component {
   //buttons become visible -done
   //onclick current phrase identity is updated in the context
   //visibility for buttons is turned off -done
-  //new buttons are set to state in this component
+  //new buttons are set to state in this component -done
   //new phrase is spoken
   //buttons are triggered to appear... repeat
 
