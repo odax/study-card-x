@@ -15,17 +15,6 @@ class App extends Component {
           </div>
         )}
       </AppContextConsumer>
-      // <AppContextConsumer>
-      //   {value => (
-      //     <div className="App">
-      //       {value.AppState.thisIsState ? (
-      //         <div>Hi</div>
-      //       ) : (
-      //         <div>Bye</div>
-      //       )}
-      //     </div>
-      //   )}
-      // </AppContextConsumer>
     );
   }
 }

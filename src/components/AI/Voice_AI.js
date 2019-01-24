@@ -2,28 +2,55 @@ import React, { Component } from "react";
 import "./Voice_AI.css";
 
 //import dependencies
-import Typing from 'react-typing-animation';
+import Typing from "react-typing-animation";
 
 export default class Voice_AI extends Component {
 
-handleFinishTextAnimation = () => {
-    const { HandleChangeState } = this.props.contextState;
-    HandleChangeState('visibleButtons', true);
-}
+  state = {
+    localText: '',
+    localIdentity: ''
+  }
 
-AnimatedTypingComponent = () => {
+  componentDidMount = () => {
+    const { preset, initializing } = this.props.contextState.AppState;
+    if (initializing === true) {
+      this.setState({
+        localText: preset.greeting.text,
+        localIdentity: preset.greeting.identity
+      })
+    }
+  };
+
+  componentDidUpdate = () => {
+    //keep in mind that currentIdentity below is the new identity that will cause this text to update
+    const { currentIdentity, preset } = this.props.contextState.AppState;
+    if (this.state.localIdentity !== currentIdentity) {
+      this.setState({
+        localText: preset[currentIdentity].text,
+        localIdentity: currentIdentity
+      });
+      console.log('CLICKED THE BUTTON AND UPDATED THE STATE!!!!!!')
+    }
+  };
+
+  handleFinishTextAnimation = () => {
+    const { HandleChangeState } = this.props.contextState;
+    HandleChangeState("visibleButtons", true);
+  };
+
+  AnimatedTypingComponent = () => {
     return (
-    <Typing onFinishedTyping={this.handleFinishTextAnimation}>
-        <span>{this.props.contextState.AppState.preset.greeting.text}</span>
-    </Typing>
-    )
-}
+      <Typing onFinishedTyping={this.handleFinishTextAnimation}>
+        <span>{this.state.localText}</span>
+      </Typing>
+    );
+  };
 
   render() {
     return (
       <div>
-          <this.AnimatedTypingComponent />
-          <span>Name: {this.props.contextState.name}</span> 
+        <this.AnimatedTypingComponent />
+        {this.state.localText}
       </div>
     );
   }
