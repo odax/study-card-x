@@ -17,8 +17,8 @@ export default class ResponseButtons extends Component {
     if (this.state.visibleButtons !== AppState.visibleButtons) {
       this.setState({
         visibleButtons: AppState.visibleButtons
-      })
-    };
+      });
+    }
     if (this.state.identity !== AppState.currentIdentity) {
       this.setState({
         //maybe a case here to control what the state looks like depending on identity?
@@ -29,12 +29,16 @@ export default class ResponseButtons extends Component {
         btn1next: preset[currentIdentity].btn1next,
         btn2: preset[currentIdentity].btn2,
         btn2next: preset[currentIdentity].btn2next
-      })
-      console.log('updated state', this.state);
+      });
+      console.log("updated state", this.state);
     }
   };
   componentDidMount = () => {
-    const { preset, visibleButtons, initializing } = this.props.contextState.AppState;
+    const {
+      preset,
+      visibleButtons,
+      initializing
+    } = this.props.contextState.AppState;
     if (initializing === true) {
       this.setState(
         {
@@ -57,18 +61,22 @@ export default class ResponseButtons extends Component {
   //handler will have responses to hardcorded cases
   handleButtonClick = clickType => {
     const { HandleChangeState } = this.props.contextState;
-    HandleChangeState('visibleButtons', false);
+    HandleChangeState("visibleButtons", false);
     this.setState({
       visibleButtons: false
-    })
-    switch(clickType) {
-      case 'no':
-        HandleChangeState('currentIdentity', clickType);
-        console.log('no!');
-        break;
-      default:
-      return null;
-    }
+    });
+    HandleChangeState("currentIdentity", clickType);
+    // switch(clickType) {
+    //   case 'no':
+    //     HandleChangeState('currentIdentity', clickType);
+    //     console.log('no!');
+    //     break;
+    //   case ''
+    //   default:
+    //   return null;
+    // }
+
+    //lets assume everything is two buttoned
   };
   //current phrase identity is preset in context -done
   //componentDidMount will update state with first buttons, -done
@@ -96,9 +104,7 @@ export default class ResponseButtons extends Component {
           <div
             className="ResponseButtons__ButtonContainer"
             style={{
-              visibility: this.state.visibleButtons
-                ? "visible"
-                : "hidden"
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
           >
             <button
@@ -116,6 +122,25 @@ export default class ResponseButtons extends Component {
               }}
             >
               {this.state.btn2}
+            </button>
+          </div>
+        );
+        break;
+      case "one":
+        buttons = (
+          <div
+            className="ResponseButtons__ButtonContainer"
+            style={{
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
+            }}
+          >
+            <button
+              className="waves-effect waves-light btn-small"
+              onClick={() => {
+                this.handleButtonClick(this.state.btn1next);
+              }}
+            >
+              {this.state.btn1}
             </button>
           </div>
         );
