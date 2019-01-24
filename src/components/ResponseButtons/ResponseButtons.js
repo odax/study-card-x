@@ -29,8 +29,8 @@ export default class ResponseButtons extends Component {
     }
   };
   componentDidMount = () => {
-    const { preset, visibleButtons } = this.props.contextState.AppState;
-    if (this.props.contextState.AppState.initializing === true) {
+    const { preset, visibleButtons, initializing } = this.props.contextState.AppState;
+    if (initializing === true) {
       this.setState(
         {
           identity: preset.greeting.identity,

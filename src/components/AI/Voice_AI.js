@@ -5,6 +5,34 @@ import "./Voice_AI.css";
 import Typing from "react-typing-animation";
 
 export default class Voice_AI extends Component {
+
+  state = {
+    localText: '',
+    localIdentity: ''
+  }
+
+  componentDidMount = () => {
+    const { preset, initializing } = this.props.contextState.AppState;
+    if (initializing === true) {
+      this.setState({
+        localText: preset.greeting.text,
+        localIdentity: preset.greeting.identity
+      })
+    }
+  };
+
+  componentDidUpdate = () => {
+    //keep in mind that currentIdentity below is the new identity that will cause this text to update
+    const { currentIdentity, preset } = this.props.contextState.AppState;
+    if (this.state.localIdentity !== currentIdentity) {
+      this.setState({
+        localText: preset[currentIdentity].text,
+        localIdentity: currentIdentity
+      });
+      console.log('CLICKED THE BUTTON AND UPDATED THE STATE!!!!!!')
+    }
+  };
+
   handleFinishTextAnimation = () => {
     const { HandleChangeState } = this.props.contextState;
     HandleChangeState("visibleButtons", true);
@@ -13,7 +41,7 @@ export default class Voice_AI extends Component {
   AnimatedTypingComponent = () => {
     return (
       <Typing onFinishedTyping={this.handleFinishTextAnimation}>
-        <span>{this.props.contextState.AppState.preset.greeting.text}</span>
+        <span>{this.state.localText}</span>
       </Typing>
     );
   };
@@ -22,6 +50,7 @@ export default class Voice_AI extends Component {
     return (
       <div>
         <this.AnimatedTypingComponent />
+        {this.state.localText}
       </div>
     );
   }
