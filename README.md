@@ -6,7 +6,7 @@ Current button route that works:
 
 -Class Naming
 Nested naming for App.js component example:
-
+```
 div className='App__Container'
    div className='Container__Guy-1'
     I am guy 1!
@@ -18,7 +18,7 @@ div className='App__Container'
       I am guy 2!
     /div
 /div
-
+```
 
 -An exhaustive explanation about this apps logic
 useful info: AppContext = AppState + Global Methods, AppState = only the state, no methods.
@@ -35,7 +35,7 @@ object we will be accessing for text, and button data.
 
 So that you can understand better, this is an example of the button/text data
 is stored:
-
+```
 export default {
     greeting: {
         identity: 'greeting',
@@ -67,7 +67,7 @@ export default {
         btn2: 'Nope, I think Ill manage',
         btn2next: 'startStudy'
     },
-
+```
 Where the current phase that the app is at is primarily tracked by the local state 'identity' and AppState 'currentIdentity', which is taken off of the data object and set to the states upon clicking a button.
 
 This is what the buttonHandler does --> it first set's the 
