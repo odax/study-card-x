@@ -1,10 +1,10 @@
-Current button route that works:
+  *Current button route that works:
 -No
 -Guest
 -Yeah
 -Ok etc..
 
--Class Naming
+  *Class Naming
 Nested naming for App.js component example:
 ```
 div className='App__Container'
@@ -20,18 +20,9 @@ div className='App__Container'
 /div
 ```
 
--An exhaustive explanation about this apps logic
-useful info: AppContext = AppState + Global Methods, AppState = only the state, no methods.
-AppContext's state acts as the global store object for this application.
-Methods are also stored as global methods here.
-Upon mounting, 'initializing' in AppState is true.
-When 'initializing' is true, ResponseButtons.js (handles rendering buttons) and Voice_AI.js (handles rendering text)
-    will set their localState to preset values in order to display the first text and buttons.
-Inside ResponseButtons.js render() method, I've hard coded a switch statement
-that will conditionally render the type of buttons that I want. (ex: one button, two buttons, three buttons). Render will read the 'type' in the local state, and render buttons with properties given by the local state (i.e. The button texts, what dataObject the button points to.. so we know what new buttons/text to render when we click it). The buttons also have a visibility property that is dependent on whether 'visibleButtons' in the local state is true or not. Initially it is false, so the buttons are not visible. They become visible after the text animates. After text animates a function will be called in Voice_AI.js that is actually a method on the AppContext. It will change the AppState 'visibleButtons' to true. Inside of ResponseButtons in a componentDidUpdate, I created a conditional that checks: if (!this.state.visibleButtons !== AppState.visibleButtons) => basically update this.state.visibleButtons to match. So the buttons become visible. Now when I click a button, a few things happen: 
-A handleButtonClick is called and (this.state.btnnext) is passed to it. Btnnext
-(actually btn1next or btn2next) is a state property whose value is the next
-object we will be accessing for text, and button data.
+  *App Logic
+useful info: AppContext = AppState + Global Methods, AppState = only the state, no methods. AppContext's state acts as the global store object for this application. Methods are also stored as global methods here. Upon mounting, 'initializing' in AppState is true. When 'initializing' is true, ResponseButtons.js (handles rendering buttons) and Voice_AI.js (handles rendering text) will set their localState to preset values in order to display the first text and buttons. Inside ResponseButtons.js render() method, I've hard coded a switch statement that will conditionally render the type of buttons that I want. (ex: one button, two buttons, three buttons). Render will read the 'type' in the local state, and render buttons with properties given by the local state (i.e. The button texts, what dataObject the button points to.. so we know what new buttons/text to render when we click it). The buttons also have a visibility property that is dependent on whether 'visibleButtons' in the local state is true or not. Initially it is false, so the buttons are not visible. They become visible after the text animates. After text animates a function will be called in Voice_AI.js that is actually a method on the AppContext. It will change the AppState 'visibleButtons' to true. Inside of ResponseButtons in a componentDidUpdate, I created a conditional that checks: if (!this.state.visibleButtons !== AppState.visibleButtons) => basically update this.state.visibleButtons to match. So the buttons become visible. Now when I click a button, a few things happen: A handleButtonClick is called and (this.state.btnnext) is passed to it. Btnnext
+(actually btn1next or btn2next) is a state property whose value is the next object we will be accessing for text, and button data.
 
 So that you can understand better, this is an example of the button/text data
 is stored:
