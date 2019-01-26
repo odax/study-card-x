@@ -61,11 +61,17 @@ export default class ResponseButtons extends Component {
   //handler will have responses to hardcorded cases
   handleButtonClick = clickType => {
     const { HandleChangeState } = this.props.contextState;
-    HandleChangeState("visibleButtons", false);
+
     this.setState({
       visibleButtons: false
+    }, () => {
+      HandleChangeState("visibleButtons", false);
+      HandleChangeState("currentIdentity", clickType);
     });
-    HandleChangeState("currentIdentity", clickType);
+    console.log('button should go invisible')
+
+ 
+ 
     // switch(clickType) {
     //   case 'no':
     //     HandleChangeState('currentIdentity', clickType);
@@ -93,6 +99,7 @@ export default class ResponseButtons extends Component {
   };
   render() {
     let buttons;
+    console.log('ResponseButton is rendered!!!!!!!!', this.state.visibleButtons);
     //switch determines definition of buttons
     switch (this.state.btnType) {
       case "":
@@ -104,7 +111,7 @@ export default class ResponseButtons extends Component {
           <div
             className="ResponseButtons__ButtonContainer"
             style={{
-              visibility: this.state.visibleButtons ? "visible" : "hidden"
+              display: this.state.visibleButtons ? "block" : "none"
             }}
           >
             <button

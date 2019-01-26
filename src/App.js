@@ -11,7 +11,7 @@ class App extends Component {
         {value => (
           <div className="App">
             <AiVoice contextState = {value}/>
-            <ResponseButtons contextState = {value}/>
+            <ResponseButtons key = {Math.random()} contextState = {value}/>
           </div>
         )}
       </AppContextConsumer>
