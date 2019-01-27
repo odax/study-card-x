@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './ResponseButtons.css';
 
 export default class ResponseButtons extends Component {
   state = {
@@ -111,7 +112,7 @@ export default class ResponseButtons extends Component {
           <div
             className="ResponseButtons__ButtonContainer"
             style={{
-              display: this.state.visibleButtons ? "block" : "none"
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
           >
             <button
