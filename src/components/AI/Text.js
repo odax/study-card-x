@@ -55,7 +55,8 @@ export default class Text extends Component {
 
   render() {
     let textHolder;
-    if (this.state.updating) {
+    //adding that or below may cause bugs.
+    if (this.state.updating || this.state.localText === null) {
       textHolder = null;
     } else {
       textHolder = (
