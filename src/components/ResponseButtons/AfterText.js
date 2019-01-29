@@ -153,6 +153,18 @@ export default class AfterText extends Component {
           </div>
         );
         break;
+        case "login":
+        newItems = (
+          <div
+            className="AfterText__ButtonContainer"
+            style={{
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
+            }}
+          >
+            Need to put form here
+          </div>
+        );
+        break;
       default:
         return null;
     }
