@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 //import voice
-import presets from "./Voice";
+import presets from "./Data";
 
 //create new context
 const AppContext = React.createContext();

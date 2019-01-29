@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./Voice_AI.css";
+import "./Text.css";
 
 //import dependencies
 import Typing from "react-typing-animation";
 
-export default class Voice_AI extends Component {
+export default class Text extends Component {
 
   state = {
     localText: '',
@@ -55,7 +55,8 @@ export default class Voice_AI extends Component {
 
   render() {
     let textHolder;
-    if (this.state.updating) {
+    //adding that or below may cause bugs.
+    if (this.state.updating || this.state.localText === null) {
       textHolder = null;
     } else {
       textHolder = (
@@ -63,7 +64,7 @@ export default class Voice_AI extends Component {
       )
     }
     return (
-      <div className='Voice_AI__Text'>
+      <div className='Text__Text'>
         {textHolder}
       </div>
     );
