@@ -99,7 +99,7 @@ export default class AfterText extends Component {
     this.props.contextState.HandleChangeState(item1, item2);
   };
   render() {
-    let buttons;
+    let newItems;
     console.log('ResponseButton is rendered!!!!!!!!', this.state.visibleButtons);
     //switch determines definition of buttons
     switch (this.state.type) {
@@ -107,7 +107,7 @@ export default class AfterText extends Component {
         console.log("no buttons!");
         break;
       case "two":
-        buttons = (
+        newItems = (
           //button visibility needs to be read straight off of the context state because this state has no means to update when that one changes
           <div
             className="AfterText__ButtonContainer"
@@ -135,7 +135,7 @@ export default class AfterText extends Component {
         );
         break;
       case "one":
-        buttons = (
+        newItems = (
           <div
             className="AfterText__ButtonContainer"
             style={{
@@ -158,7 +158,7 @@ export default class AfterText extends Component {
     }
     return (
       //when displaying button make sure to add visibility: this.state.display
-      <div>{buttons}</div>
+      <div>{newItems}</div>
     );
   }
 }
