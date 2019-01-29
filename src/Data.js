@@ -9,13 +9,23 @@ export default {
         btn2: 'No',
         btn2next: 'no'
     },
+    signup: {
+        identity: 'signup',
+        collection: 'intro',
+        text: 'Sign Up', //when rendering, should check if text is null
+        type: 'signup',
+        btn1: 'Create',
+        btn1next: 'accountCreationHandler', //need to make a handler for this
+        btn2: 'Cancel',
+        btn2next: 'greeting'
+    },
     login: {
         identity: 'login',
         collection: 'intro',
-        text: 'Create Account', //when rendering, should check if text is null
+        text: 'Log In',
         type: 'login',
-        btn1: 'Create',
-        btn1next: 'accountCreationHandler', //need to make a handler for this
+        btn1: 'Continue',
+        btn1next: 'accountLoginHandler', //need to make a handler for this
         btn2: 'Cancel',
         btn2next: 'greeting'
     },
@@ -38,14 +48,6 @@ export default {
         btn1next: 't1',
         btn2: 'Nope, I think Ill manage',
         btn2next: 'startStudy'
-    },
-    signup: {
-        identity: 'signup',
-        collection: "intro",
-        text: 'Sweet, tell me a little about yourself..',
-        type: 'none',
-        form: 'signup',
-        submit: ['handleSignUp'] //add more for when signup is complete
     },
     t1: {
         identity: 't1',
