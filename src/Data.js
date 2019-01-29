@@ -12,9 +12,12 @@ export default {
     login: {
         identity: 'login',
         collection: 'intro',
-        text: null, //when rendering, should check if text is null
+        text: 'Create Account', //when rendering, should check if text is null
         type: 'login',
-        
+        btn1: 'Create',
+        btn1next: 'accountCreationHandler', //need to make a handler for this
+        btn2: 'Cancel',
+        btn2next: 'greeting'
     },
     no: {
         identity: 'no',
