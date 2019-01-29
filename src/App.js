@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AppContextConsumer } from "./AppContext";
-import AiVoice from "./components/AI/Voice_AI";
-import ResponseButtons from "./components/ResponseButtons/ResponseButtons";
+import Text from "./components/AI/Text";
+import AfterText from "./components/ResponseButtons/AfterText";
 import "./App.css";
 
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
       <AppContextConsumer>
         {value => (
           <div className="App">
-            <AiVoice contextState = {value}/>
-            <ResponseButtons key = {Math.random()} contextState = {value}/>
+            <Text contextState = {value}/>
+            <AfterText key = {Math.random()} contextState = {value}/>
           </div>
         )}
       </AppContextConsumer>

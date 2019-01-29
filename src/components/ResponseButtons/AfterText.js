@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './ResponseButtons.css';
+import './AfterText.css';
 
-export default class ResponseButtons extends Component {
+export default class AfterText extends Component {
   state = {
     identity: "",
-    btnType: "",
+    type: "",
     btn1: "",
     btn1next: "",
     btn2: "",
@@ -14,7 +14,7 @@ export default class ResponseButtons extends Component {
   componentDidUpdate = () => {
     const { AppState } = this.props.contextState;
     const { preset, currentIdentity } = AppState;
-    console.log("Console Log for componentDidUpdate for ResponseButtons");
+    console.log("Console Log for componentDidUpdate for AfterText");
     if (this.state.visibleButtons !== AppState.visibleButtons) {
       this.setState({
         visibleButtons: AppState.visibleButtons
@@ -24,7 +24,7 @@ export default class ResponseButtons extends Component {
       this.setState({
         //maybe a case here to control what the state looks like depending on identity?
         identity: currentIdentity,
-        btnType: preset[currentIdentity].btnType,
+        type: preset[currentIdentity].type,
         btn1: preset[currentIdentity].btn1,
         //I get the feeling that since we have the case handler below, we don't need to really use these next states, but they will help with scalability
         btn1next: preset[currentIdentity].btn1next,
@@ -48,7 +48,7 @@ export default class ResponseButtons extends Component {
           btn1next: preset.greeting.btn1next,
           btn2: preset.greeting.btn2,
           btn2next: preset.greeting.btn2next,
-          btnType: preset.greeting.btnType,
+          type: preset.greeting.type,
           visibleButtons: visibleButtons
         },
         console.log(
@@ -102,7 +102,7 @@ export default class ResponseButtons extends Component {
     let buttons;
     console.log('ResponseButton is rendered!!!!!!!!', this.state.visibleButtons);
     //switch determines definition of buttons
-    switch (this.state.btnType) {
+    switch (this.state.type) {
       case "":
         console.log("no buttons!");
         break;
@@ -110,7 +110,7 @@ export default class ResponseButtons extends Component {
         buttons = (
           //button visibility needs to be read straight off of the context state because this state has no means to update when that one changes
           <div
-            className="ResponseButtons__ButtonContainer"
+            className="AfterText__ButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
@@ -137,7 +137,7 @@ export default class ResponseButtons extends Component {
       case "one":
         buttons = (
           <div
-            className="ResponseButtons__ButtonContainer"
+            className="AfterText__ButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
