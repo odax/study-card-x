@@ -144,7 +144,12 @@ export default class AfterText extends Component {
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
           >
-            Need to put form here
+          <form onSubmit={this.loginHandler}>
+            <input type='text' placeholder='username'/>
+            <input type='password' placeholder='password'/>
+            <button type='submit'>login</button>
+          </form>
+            <button>Cancel</button>
           </div>
         );
         break;
