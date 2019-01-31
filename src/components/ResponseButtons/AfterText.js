@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './AfterText.css';
+import "./AfterText.css";
 
 export default class AfterText extends Component {
   state = {
@@ -63,44 +63,27 @@ export default class AfterText extends Component {
   handleButtonClick = clickType => {
     const { HandleChangeState } = this.props.contextState;
 
-    this.setState({
-      visibleButtons: false
-    }, () => {
-      HandleChangeState("visibleButtons", false);
-      HandleChangeState("currentIdentity", clickType);
-    });
-    console.log('button should go invisible')
-
- 
- 
-    // switch(clickType) {
-    //   case 'no':
-    //     HandleChangeState('currentIdentity', clickType);
-    //     console.log('no!');
-    //     break;
-    //   case ''
-    //   default:
-    //   return null;
-    // }
-
-    //lets assume everything is two buttoned
+    this.setState(
+      {
+        visibleButtons: false
+      },
+      () => {
+        HandleChangeState("visibleButtons", false);
+        HandleChangeState("currentIdentity", clickType);
+      }
+    );
+    console.log("button should go invisible");
   };
-  //current phrase identity is preset in context -done
-  //componentDidMount will update state with first buttons, -done
-  //after speech is done voice_ai will update context with visible: true -done
-  //buttons become visible -done
-  //onclick current phrase identity is updated in the context
-  //visibility for buttons is turned off -done
-  //new buttons are set to state in this component -done
-  //new phrase is spoken
-  //buttons are triggered to appear... repeat
 
   HandleUpdateContext = (item1, item2) => {
     this.props.contextState.HandleChangeState(item1, item2);
   };
   render() {
     let newItems;
-    console.log('ResponseButton is rendered!!!!!!!!', this.state.visibleButtons);
+    console.log(
+      "ResponseButton is rendered!!!!!!!!",
+      this.state.visibleButtons
+    );
     //switch determines definition of buttons
     switch (this.state.type) {
       case "":
@@ -153,7 +136,7 @@ export default class AfterText extends Component {
           </div>
         );
         break;
-        case "login":
+      case "login":
         newItems = (
           <div
             className="AfterText__ButtonContainer"

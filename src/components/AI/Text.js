@@ -5,11 +5,10 @@ import "./Text.css";
 import Typing from "react-typing-animation";
 
 export default class Text extends Component {
-
   state = {
-    localText: '',
-    localIdentity: ''
-  }
+    localText: "",
+    localIdentity: ""
+  };
 
   componentDidMount = () => {
     const { preset, initializing } = this.props.contextState.AppState;
@@ -17,8 +16,8 @@ export default class Text extends Component {
       this.setState({
         localText: preset.greeting.text,
         localIdentity: preset.greeting.identity,
-        updating: false,
-      })
+        updating: false
+      });
     }
   };
 
@@ -28,7 +27,7 @@ export default class Text extends Component {
     if (this.state.updating === true) {
       this.setState({
         updating: false
-      })
+      });
     }
     if (this.state.localIdentity !== currentIdentity) {
       this.setState({
@@ -36,7 +35,7 @@ export default class Text extends Component {
         localText: preset[currentIdentity].text,
         localIdentity: currentIdentity
       });
-      console.log('CLICKED THE BUTTON AND UPDATED THE STATE!!!!!!')
+      console.log("CLICKED THE BUTTON AND UPDATED THE STATE!!!!!!");
     }
   };
 
@@ -59,14 +58,8 @@ export default class Text extends Component {
     if (this.state.updating || this.state.localText === null) {
       textHolder = null;
     } else {
-      textHolder = (
-        <this.AnimatedTypingComponent />
-      )
+      textHolder = <this.AnimatedTypingComponent />;
     }
-    return (
-      <div className='Text__Text'>
-        {textHolder}
-      </div>
-    );
+    return <div className="Text__Text">{textHolder}</div>;
   }
 }
