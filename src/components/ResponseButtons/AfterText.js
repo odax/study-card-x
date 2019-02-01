@@ -80,12 +80,10 @@ export default class AfterText extends Component {
   HandleUpdateContext = (item1, item2) => {
     this.props.contextState.HandleChangeState(item1, item2);
   };
-  handleChangeLoginUsername = event => {
-    this.setState({ username: event.target.value });
-  };
-  handleChangeLoginPassword = event => {
-    this.setState({ username: event.target.value });
-  };
+  handleLoginChange = name => ({target: {value}}) => {
+  this.setState({[name]: value});
+    console.log(this.state.username);
+  }
   loginHandler = (event) => {
     //will call axios function in context state, passing in this.state.password/username
   }
@@ -156,8 +154,8 @@ export default class AfterText extends Component {
             }}
           >
           <form onSubmit={this.loginHandler}>
-            <input type='text' placeholder='username' onChange={this.handleChangeLoginUsername}/>
-            <input type='password' placeholder='password' onChange={this.handleChangeLoginPassword}/>
+            <input type='text' placeholder='username' onChange={this.handleLoginChange('username')}/>
+            <input type='password' placeholder='password' onChange={this.handleLoginChange('password')}/>
             <button type='submit' className="waves-effect waves-light btn-small">login</button>
             <button className="waves-effect waves-light btn-small">Cancel</button>
           </form>
