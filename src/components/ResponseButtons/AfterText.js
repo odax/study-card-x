@@ -147,9 +147,10 @@ export default class AfterText extends Component {
           <form onSubmit={this.loginHandler}>
             <input type='text' placeholder='username'/>
             <input type='password' placeholder='password'/>
-            <button type='submit'>login</button>
+            <button type='submit' className="waves-effect waves-light btn-small">login</button>
+            <button className="waves-effect waves-light btn-small">Cancel</button>
           </form>
-            <button>Cancel</button>
+            
           </div>
         );
         break;
