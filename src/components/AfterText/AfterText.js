@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./AfterText.css";
-import Card from '../Card/Card';
+import Card from "../Card/Card";
 
 export default class AfterText extends Component {
   state = {
@@ -81,13 +81,13 @@ export default class AfterText extends Component {
   HandleUpdateContext = (item1, item2) => {
     this.props.contextState.HandleChangeState(item1, item2);
   };
-  handleLoginChange = name => ({target: {value}}) => {
-  this.setState({[name]: value});
+  handleLoginChange = name => ({ target: { value } }) => {
+    this.setState({ [name]: value });
     console.log(this.state.username);
-  }
-  loginHandler = (event) => {
+  };
+  loginHandler = event => {
     //will call axios function in context state, passing in this.state.password/username
-  }
+  };
   render() {
     let newItems;
     console.log(
@@ -154,23 +154,44 @@ export default class AfterText extends Component {
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
           >
-          <form onSubmit={this.loginHandler}>
-            <input type='text' placeholder='username' onChange={this.handleLoginChange('username')}/>
-            <input type='password' placeholder='password' onChange={this.handleLoginChange('password')}/>
-            <button type='submit' className="waves-effect waves-light btn-small">login</button>
-            <button className="waves-effect waves-light btn-small">Cancel</button>
-          </form>
-            
+            <form onSubmit={this.loginHandler}>
+              <input
+                type="text"
+                placeholder="username"
+                onChange={this.handleLoginChange("username")}
+              />
+              <input
+                type="password"
+                placeholder="password"
+                onChange={this.handleLoginChange("password")}
+              />
+              <button
+                type="submit"
+                className="waves-effect waves-light btn-small"
+              >
+                {this.state.btn1}
+              </button>
+            </form>
+            <button
+                className="waves-effect waves-light btn-small"
+                onClick={() => {
+                  this.handleButtonClick(this.state.btn2next);
+                }}
+              >
+                {this.state.btn2}
+              </button>
           </div>
         );
         break;
       case "create":
         newItems = (
-          <div className="AfterText__CardButtonContainer"
-          style={{
-            visibility: this.state.visibleButtons ? "visible" : "hidden"
-          }}>
-            <Card/>
+          <div
+            className="AfterText__CardButtonContainer"
+            style={{
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
+            }}
+          >
+            <Card />
             <div className="CardButtonContainer__Buttons">
               Some Buttons here
             </div>
