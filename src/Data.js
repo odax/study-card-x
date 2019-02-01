@@ -47,7 +47,7 @@ export default {
         btn1: 'Yeah',
         btn1next: 't1',
         btn2: 'Nope, I think Ill manage',
-        btn2next: 'startStudy'
+        btn2next: 's1'
     },
     t1: {
         identity: 't1',

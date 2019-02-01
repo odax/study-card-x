@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./AfterText.css";
+import Card from '../Card/Card';
 
 export default class AfterText extends Component {
   state = {
@@ -160,6 +161,19 @@ export default class AfterText extends Component {
             <button className="waves-effect waves-light btn-small">Cancel</button>
           </form>
             
+          </div>
+        );
+        break;
+      case "create":
+        newItems = (
+          <div className="AfterText__CardButtonContainer"
+          style={{
+            visibility: this.state.visibleButtons ? "visible" : "hidden"
+          }}>
+            <Card/>
+            <div className="CardButtonContainer__Buttons">
+              Some Buttons here
+            </div>
           </div>
         );
         break;

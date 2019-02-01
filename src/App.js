@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AppContextConsumer } from "./AppContext";
 import Text from "./components/AI/Text";
-import AfterText from "./components/ResponseButtons/AfterText";
+import AfterText from "./components/AfterText/AfterText";
 import "./App.css";
 
 class App extends Component {
