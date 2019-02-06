@@ -7,11 +7,15 @@ import Typing from "react-typing-animation";
 export default class Text extends Component {
   state = {
     localText: "",
-    localIdentity: ""
+    localIdentity: "",
+    skip: "",
+    updating: ""
   };
 
   componentWillMount() {
     document.addEventListener('mousedown', this.handleClick, false);
+    //maybe move this into a component will update? Something that will check if render, and if not
+    //then don't even have an event listener
   }
 
   componentDidMount = () => {
@@ -20,6 +24,7 @@ export default class Text extends Component {
       this.setState({
         localText: preset.greeting.text,
         localIdentity: preset.greeting.identity,
+        skip: false,
         updating: false
       });
     }
@@ -37,16 +42,21 @@ export default class Text extends Component {
       this.setState({
         updating: true,
         localText: preset[currentIdentity].text,
-        localIdentity: currentIdentity
+        localIdentity: currentIdentity,
+        skip: false
       });
     }
   };
 
   handleClick = (e) => {
+    e.stopPropagation();
     //check to see if animation is still occurring (i.e., visibleButtons === false)
     if (this.props.contextState.AppState.visibleButtons === false) {
-      console.log('clicky!');
-    }
+      this.setState({
+        skip: true
+      })
+    };
+    this.handleFinishTextAnimation();
   };
 
   handleFinishTextAnimation = () => {
@@ -62,6 +72,14 @@ export default class Text extends Component {
     );
   };
 
+  PlainComponent = () => {
+    return (
+      <span>
+        {this.state.localText}
+      </span>
+    )
+  };
+
   render() {
     let textHolder;
     //adding that or below may cause a bug... keep that in mind
@@ -69,6 +87,10 @@ export default class Text extends Component {
       textHolder = null;
     } else {
       textHolder = <this.AnimatedTypingComponent />;
+    }
+    //check if skip, and if so change textHolder to plain component
+    if (this.state.skip === true) {
+      textHolder = <this.PlainComponent />;
     }
     return <div className="Text__Text">{textHolder}</div>;
   }
