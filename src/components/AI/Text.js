@@ -10,6 +10,10 @@ export default class Text extends Component {
     localIdentity: ""
   };
 
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
   componentDidMount = () => {
     const { preset, initializing } = this.props.contextState.AppState;
     if (initializing === true) {
@@ -37,6 +41,10 @@ export default class Text extends Component {
       });
     }
   };
+
+  handleClick = (e) => {
+    console.log('clicky click click');
+  }
 
   handleFinishTextAnimation = () => {
     const { HandleChangeState } = this.props.contextState;
