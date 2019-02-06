@@ -43,8 +43,11 @@ export default class Text extends Component {
   };
 
   handleClick = (e) => {
-    console.log('clicky click click');
-  }
+    //check to see if animation is still occurring (i.e., visibleButtons === false)
+    if (this.props.contextState.AppState.visibleButtons === false) {
+      console.log('clicky!');
+    }
+  };
 
   handleFinishTextAnimation = () => {
     const { HandleChangeState } = this.props.contextState;
