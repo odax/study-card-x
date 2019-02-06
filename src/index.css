@@ -71,4 +71,5 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #F8F7EC
 }
