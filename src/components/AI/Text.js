@@ -35,7 +35,6 @@ export default class Text extends Component {
         localText: preset[currentIdentity].text,
         localIdentity: currentIdentity
       });
-      console.log("CLICKED THE BUTTON AND UPDATED THE STATE!!!!!!");
     }
   };
 
@@ -54,7 +53,7 @@ export default class Text extends Component {
 
   render() {
     let textHolder;
-    //adding that or below may cause bugs.
+    //adding that or below may cause a bug... keep that in mind
     if (this.state.updating || this.state.localText === null) {
       textHolder = null;
     } else {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-//import voice
+//import defined data
 import presets from "./Data";
 
 //create new context
@@ -25,7 +25,8 @@ export class AppContextProvider extends Component {
     preset: presets,
     initializing: true
   };
-  //methods here
+  
+  //methods here can be called inside components
   handleChangeVoiceState = newState => {
     this.setState({
       voiceState: newState

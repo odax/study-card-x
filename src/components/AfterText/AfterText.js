@@ -14,10 +14,10 @@ export default class AfterText extends Component {
     username: "",
     password: ""
   };
+
   componentDidUpdate = () => {
     const { AppState } = this.props.contextState;
     const { preset, currentIdentity } = AppState;
-    console.log("Console Log for componentDidUpdate for AfterText");
     if (this.state.visibleButtons !== AppState.visibleButtons) {
       this.setState({
         visibleButtons: AppState.visibleButtons
@@ -34,9 +34,9 @@ export default class AfterText extends Component {
         btn2: preset[currentIdentity].btn2,
         btn2next: preset[currentIdentity].btn2next
       });
-      console.log("updated state", this.state);
     }
   };
+
   componentDidMount = () => {
     const {
       preset,
@@ -54,15 +54,10 @@ export default class AfterText extends Component {
           type: preset.greeting.type,
           visibleButtons: visibleButtons
         },
-        console.log(
-          "Console Log after setState of ComponentDidMount for ResponseButton"
-        )
       );
     }
   };
 
-  //Need to create button click handler
-  //handler will have responses to hardcorded cases
   handleButtonClick = clickType => {
     const { HandleChangeState } = this.props.contextState;
 
@@ -75,7 +70,6 @@ export default class AfterText extends Component {
         HandleChangeState("currentIdentity", clickType);
       }
     );
-    console.log("button should go invisible");
   };
 
   HandleUpdateContext = (item1, item2) => {
@@ -83,17 +77,12 @@ export default class AfterText extends Component {
   };
   handleLoginChange = name => ({ target: { value } }) => {
     this.setState({ [name]: value });
-    console.log(this.state.username);
   };
   loginHandler = event => {
     //will call axios function in context state, passing in this.state.password/username
   };
   render() {
     let newItems;
-    console.log(
-      "ResponseButton is rendered!!!!!!!!",
-      this.state.visibleButtons
-    );
     //switch determines definition of buttons
     switch (this.state.type) {
       case "":
@@ -206,4 +195,4 @@ export default class AfterText extends Component {
       <div>{newItems}</div>
     );
   }
-}
+};
