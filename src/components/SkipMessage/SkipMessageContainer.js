@@ -10,7 +10,7 @@ export default class componentName extends Component {
   render() {
     let message;
     if (this.props.contextState.AppState.visibleButtons === false) {
-      message = <SkipMessage contextState = {this.props.contextState}/>;
+      message = <SkipMessage contextState={this.props.contextState} />;
     } else {
       message = null;
     }

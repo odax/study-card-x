@@ -26,7 +26,7 @@ export class AppContextProvider extends Component {
     initializing: true,
     skip: false
   };
-  
+
   //methods here can be called inside components
   handleChangeVoiceState = newState => {
     this.setState({

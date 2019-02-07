@@ -44,17 +44,15 @@ export default class AfterText extends Component {
       initializing
     } = this.props.contextState.AppState;
     if (initializing === true) {
-      this.setState(
-        {
-          identity: preset.greeting.identity,
-          btn1: preset.greeting.btn1,
-          btn1next: preset.greeting.btn1next,
-          btn2: preset.greeting.btn2,
-          btn2next: preset.greeting.btn2next,
-          type: preset.greeting.type,
-          visibleButtons: visibleButtons
-        },
-      );
+      this.setState({
+        identity: preset.greeting.identity,
+        btn1: preset.greeting.btn1,
+        btn1next: preset.greeting.btn1next,
+        btn2: preset.greeting.btn2,
+        btn2next: preset.greeting.btn2next,
+        type: preset.greeting.type,
+        visibleButtons: visibleButtons
+      });
     }
   };
 
@@ -162,13 +160,13 @@ export default class AfterText extends Component {
               </button>
             </form>
             <button
-                className="waves-effect waves-light btn-small"
-                onClick={() => {
-                  this.handleButtonClick(this.state.btn2next);
-                }}
-              >
-                {this.state.btn2}
-              </button>
+              className="waves-effect waves-light btn-small"
+              onClick={() => {
+                this.handleButtonClick(this.state.btn2next);
+              }}
+            >
+              {this.state.btn2}
+            </button>
           </div>
         );
         break;
@@ -195,4 +193,4 @@ export default class AfterText extends Component {
       <div>{newItems}</div>
     );
   }
-};
+}

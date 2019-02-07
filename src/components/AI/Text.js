@@ -35,7 +35,7 @@ export default class Text extends Component {
       this.setState({
         updating: true,
         localText: preset[currentIdentity].text,
-        localIdentity: currentIdentity,
+        localIdentity: currentIdentity
       });
       this.handleSetSkipFalse();
     }
@@ -43,11 +43,11 @@ export default class Text extends Component {
 
   handleSetSkipTrue = () => {
     this.props.contextState.HandleChangeState("skip", true);
-  }
+  };
 
   handleSetSkipFalse = () => {
     this.props.contextState.HandleChangeState("skip", false);
-  }
+  };
 
   handleFinishTextAnimation = () => {
     this.props.contextState.HandleFinishTextAnimation();
@@ -62,11 +62,7 @@ export default class Text extends Component {
   };
 
   PlainComponent = () => {
-    return (
-      <span>
-        {this.state.localText}
-      </span>
-    )
+    return <span>{this.state.localText}</span>;
   };
 
   render() {
