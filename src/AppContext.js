@@ -23,7 +23,8 @@ export class AppContextProvider extends Component {
     visibleButtons: false,
     currentIdentity: "greeting",
     preset: presets,
-    initializing: true
+    initializing: true,
+    skip: false
   };
   
   //methods here can be called inside components
@@ -48,13 +49,18 @@ export class AppContextProvider extends Component {
     );
   };
 
+  handleFinishTextAnimation = () => {
+    this.handleChangeState("visibleButtons", true);
+  };
+
   render() {
     return (
       <AppContext.Provider
         value={{
           AppState: this.state,
           HandleChangeState: this.handleChangeState,
-          HandleChangeName: this.handleChangeName
+          HandleChangeName: this.handleChangeName,
+          HandleFinishTextAnimation: this.handleFinishTextAnimation
         }}
       >
         {this.props.children}

@@ -12,19 +12,12 @@ export default class Text extends Component {
     updating: ""
   };
 
-  componentWillMount() {
-    document.addEventListener('mousedown', this.handleClick, false);
-    //maybe move this into a component will update? Something that will check if render, and if not
-    //then don't even have an event listener
-  }
-
   componentDidMount = () => {
     const { preset, initializing } = this.props.contextState.AppState;
     if (initializing === true) {
       this.setState({
         localText: preset.greeting.text,
         localIdentity: preset.greeting.identity,
-        skip: false,
         updating: false
       });
     }
@@ -43,25 +36,21 @@ export default class Text extends Component {
         updating: true,
         localText: preset[currentIdentity].text,
         localIdentity: currentIdentity,
-        skip: false
       });
+      this.handleSetSkipFalse();
     }
   };
 
-  handleClick = (e) => {
-    e.stopPropagation();
-    //check to see if animation is still occurring (i.e., visibleButtons === false)
-    if (this.props.contextState.AppState.visibleButtons === false) {
-      this.setState({
-        skip: true
-      })
-    };
-    this.handleFinishTextAnimation();
-  };
+  handleSetSkipTrue = () => {
+    this.props.contextState.HandleChangeState("skip", true);
+  }
+
+  handleSetSkipFalse = () => {
+    this.props.contextState.HandleChangeState("skip", false);
+  }
 
   handleFinishTextAnimation = () => {
-    const { HandleChangeState } = this.props.contextState;
-    HandleChangeState("visibleButtons", true);
+    this.props.contextState.HandleFinishTextAnimation();
   };
 
   AnimatedTypingComponent = () => {
@@ -89,7 +78,7 @@ export default class Text extends Component {
       textHolder = <this.AnimatedTypingComponent />;
     }
     //check if skip, and if so change textHolder to plain component
-    if (this.state.skip === true) {
+    if (this.props.contextState.AppState.skip === true) {
       textHolder = <this.PlainComponent />;
     }
     return <div className="Text__Text">{textHolder}</div>;
