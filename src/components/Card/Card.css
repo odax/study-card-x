@@ -1,21 +1,50 @@
-.Card__Card-Container {
+/*animation properties*/
+.Card__Flip-Container:hover .Flip-Container__Flipper,
+.flip-container.hover .Flip-Container__Flipper {
+  transform: rotateY(180deg);
+}
+.Card__Flip-Container,
+.Flipper__Front,
+.Flipper__Back {
+  width: 100%;
+}
+.Flipper__Front,
+.Flipper__Back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.Flipper__Front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+.Flipper__Back {
+  transform: rotateY(180deg);
+}
+/* normal properties */
+.Card__Flip-Container {
   border: 1px solid red;
   width: 100%;
   height: 240px;
+  perspective: 1000px;
   /*need a final solution to height*/
 }
-.Card__Card-Container .Card-Container__Card {
+.Card__Flip-Container .Flip-Container__Flipper {
   border: 5px solid green;
   width: 40%;
   height: 100%;
   margin: auto;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
 }
-.Card__Card-Container .Card-Container__Card .Card__Card-Content {
+.Card__Flip-Container .Flip-Container__Flipper .Flipper__Front .Front__Card .Card__Card-Content {
   border: 1px solid blue;
 }
-.Card__Card-Container .Card-Container__Card .Card__Card-Content .Card-Content__Card-Title {
+.Card__Flip-Container .Flip-Container__Flipper .Flipper__Front .Front__Card .Card__Card-Content .Card-Content__Card-Title {
   border: 1px solid pink;
 }
-.Card__Card-Container .Card-Container__Card .Card__Card-Content .Card-Content__Card-Question {
+.Card__Flip-Container .Flip-Container__Flipper .Flipper__Front .Front__Card .Card__Card-Content .Card-Content__Card-Question {
   border: 1px solid yellow;
 }
