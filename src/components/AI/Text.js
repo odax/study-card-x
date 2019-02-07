@@ -7,7 +7,9 @@ import Typing from "react-typing-animation";
 export default class Text extends Component {
   state = {
     localText: "",
-    localIdentity: ""
+    localIdentity: "",
+    skip: "",
+    updating: ""
   };
 
   componentDidMount = () => {
@@ -35,12 +37,20 @@ export default class Text extends Component {
         localText: preset[currentIdentity].text,
         localIdentity: currentIdentity
       });
+      this.handleSetSkipFalse();
     }
   };
 
+  handleSetSkipTrue = () => {
+    this.props.contextState.HandleChangeState("skip", true);
+  };
+
+  handleSetSkipFalse = () => {
+    this.props.contextState.HandleChangeState("skip", false);
+  };
+
   handleFinishTextAnimation = () => {
-    const { HandleChangeState } = this.props.contextState;
-    HandleChangeState("visibleButtons", true);
+    this.props.contextState.HandleFinishTextAnimation();
   };
 
   AnimatedTypingComponent = () => {
@@ -51,6 +61,10 @@ export default class Text extends Component {
     );
   };
 
+  PlainComponent = () => {
+    return <span>{this.state.localText}</span>;
+  };
+
   render() {
     let textHolder;
     //adding that or below may cause a bug... keep that in mind
@@ -58,6 +72,10 @@ export default class Text extends Component {
       textHolder = null;
     } else {
       textHolder = <this.AnimatedTypingComponent />;
+    }
+    //check if skip, and if so change textHolder to plain component
+    if (this.props.contextState.AppState.skip === true) {
+      textHolder = <this.PlainComponent />;
     }
     return <div className="Text__Text">{textHolder}</div>;
   }
