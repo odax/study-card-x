@@ -2,7 +2,6 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,10 +45,21 @@ table {
 border-collapse: collapse;
 border-spacing: 0;
 }
+
+/*
+end of reset
+*/
+
 html {
   height: 100%;
   border: 1px solid teal;
 };
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;  
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -58,18 +68,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-    
-}
-body {
   height: 100%;
   border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #F8F7EC
+  background-color: #F8F7EC;
 }
