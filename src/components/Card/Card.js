@@ -4,18 +4,21 @@ import "./Card.css";
 export default class Card extends Component {
   render() {
     return (
-      <div Card__Card-Container>
-        <div class="row Card-Container__Row">
-          <div class="col s12 m6">
-            <div class="card blue-grey darken-1">
-              <div class="card-content white-text">
-                <span class="card-title">Card Title</span>
-                <p>
-                  Add a new study card:
-                </p>
+      <div className="Card__Flip-Container container">
+        <div className="Flip-Container__Flipper">
+          <div className="Flipper__Front">
+            <div className="Front__Card card green lighten-2">
+              <div className="Card__Card-Content">
+                <span className="Card-Content__Card-Title">Question</span>
+                <div className="Card-Content__Card-Question">
+                  <form>
+                    <input type="textarea" />
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <div className="Flipper__Back">back</div>
         </div>
       </div>
     );
