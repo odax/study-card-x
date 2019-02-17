@@ -4,6 +4,7 @@ import "./Text.css";
 //import dependencies
 import Typing from "react-typing-animation";
 
+//This component will render out text for each line of speech
 export default class Text extends Component {
   state = {
     localText: "",
@@ -12,6 +13,7 @@ export default class Text extends Component {
     updating: ""
   };
 
+  //set initial states upon mounting
   componentDidMount = () => {
     const { preset, initializing } = this.props.contextState.AppState;
     if (initializing === true) {
@@ -24,13 +26,15 @@ export default class Text extends Component {
   };
 
   componentDidUpdate = () => {
-    //keep in mind that currentIdentity below is the new identity that will cause this text to update
+    //currentIdentity is a new line of text that will trigger update
     const { currentIdentity, preset } = this.props.contextState.AppState;
+    //there are conditionals that rely on updating to switch 'true' to 'false' in order to properly the speech text
     if (this.state.updating === true) {
       this.setState({
         updating: false
       });
     }
+    //since the text-to-display changes on the context first, we need to see if our displayed text matches
     if (this.state.localIdentity !== currentIdentity) {
       this.setState({
         updating: true,
@@ -41,6 +45,7 @@ export default class Text extends Component {
     }
   };
 
+  //skip is a state key that allows us to track whether the user has clicked, during the text animation, to skip the animation 
   handleSetSkipTrue = () => {
     this.props.contextState.HandleChangeState("skip", true);
   };
@@ -49,10 +54,14 @@ export default class Text extends Component {
     this.props.contextState.HandleChangeState("skip", false);
   };
 
+  //this is called by the 'react-typing-animation' package when the animation is complete
+  //essentially will update the context state to make buttons associated with the room visible
   handleFinishTextAnimation = () => {
     this.props.contextState.HandleFinishTextAnimation();
   };
 
+  //https://www.npmjs.com/package/react-typing-animation
+  //see to learn more about 'react-typing-animation' package
   AnimatedTypingComponent = () => {
     return (
       <Typing onFinishedTyping={this.handleFinishTextAnimation}>
