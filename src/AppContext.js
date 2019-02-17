@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from 'axios';
-
-const BACKEND_URL = 'placeholder'; //will be added
-
 //import defined data
 import presets from "./Data";
+
+
+const BACKEND_URL = 'placeholder'; //will be added
 
 //create new context
 const AppContext = React.createContext();
