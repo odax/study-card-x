@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import axios from 'axios';
+
+const BACKEND_URL = 'placeholder'; //will be added
 
 //import defined data
 import presets from "./Data";
@@ -9,6 +12,7 @@ const AppContext = React.createContext();
 
 export class AppContextProvider extends Component {
   state = {
+    authenticated: false,
     isLoggedIn: false,
     name: "",
     cards: [
@@ -28,6 +32,7 @@ export class AppContextProvider extends Component {
   };
 
   //methods here can be called inside components
+  //This updates the animated text after clicking a button
   handleChangeVoiceState = newState => {
     this.setState({
       voiceState: newState
@@ -40,6 +45,7 @@ export class AppContextProvider extends Component {
     });
   };
 
+  //generic context state changer
   handleChangeState = (stateKey, value) => {
     this.setState(
       {
@@ -52,6 +58,26 @@ export class AppContextProvider extends Component {
   handleFinishTextAnimation = () => {
     this.handleChangeState("visibleButtons", true);
   };
+
+  //This will be called in the sign-in screen
+  //returns token that is attatched to the local storage 
+  //and sets context state "authenticated" to true
+  handleSignIn = async e => {
+    e.preventDefault();
+    const body = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    };
+    try {
+      const response = await axios.post(`${BACKEND_URL}/login`, body);
+      console.log(response);
+      //additionally here we will set the token to local storage 
+      //and change the state of the context to authenticated
+      //i.e. this.setState
+    } catch (e) {
+      //failed async
+    }
+  }
 
   render() {
     return (
