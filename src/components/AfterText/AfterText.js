@@ -90,7 +90,7 @@ export default class AfterText extends Component {
         newItems = (
           //button visibility needs to be read straight off of the context state because this state has no means to update when that one changes
           <div
-            className="AfterText__ButtonContainer"
+            className="Container__ButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
@@ -117,7 +117,7 @@ export default class AfterText extends Component {
       case "one":
         newItems = (
           <div
-            className="AfterText__ButtonContainer"
+            className="Container__ButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
@@ -136,7 +136,7 @@ export default class AfterText extends Component {
       case "login":
         newItems = (
           <div
-            className="AfterText__ButtonContainer"
+            className="Container__ButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
@@ -152,28 +152,30 @@ export default class AfterText extends Component {
                 placeholder="password"
                 onChange={this.handleLoginChange("password")}
               />
-              <button
-                type="submit"
-                className="waves-effect waves-light btn-small"
-              >
-                {this.state.btn1}
-              </button>
+              <div className="ButtonContainer__Buttons">
+                <button
+                  type="submit"
+                  className="waves-effect waves-light btn-small"
+                >
+                  {this.state.btn1}
+                </button>
+                <button
+                  className="waves-effect waves-light btn-small"
+                  onClick={() => {
+                    this.handleButtonClick(this.state.btn2next);
+                  }}
+                >
+                  {this.state.btn2}
+                </button>
+              </div>
             </form>
-            <button
-              className="waves-effect waves-light btn-small"
-              onClick={() => {
-                this.handleButtonClick(this.state.btn2next);
-              }}
-            >
-              {this.state.btn2}
-            </button>
           </div>
         );
         break;
       case "create":
         newItems = (
           <div
-            className="AfterText__CardButtonContainer"
+            className="Container__CardButtonContainer"
             style={{
               visibility: this.state.visibleButtons ? "visible" : "hidden"
             }}
@@ -190,7 +192,7 @@ export default class AfterText extends Component {
     }
     return (
       //when displaying button make sure to add visibility: this.state.display
-      <div>{newItems}</div>
+      <div className="AfterText__Container">{newItems}</div>
     );
   }
 }

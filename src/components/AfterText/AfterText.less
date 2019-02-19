@@ -1,6 +1,23 @@
-.AfterText__ButtonContainer {
-    form {
-        margin: auto;
-        max-width: 50%;
+.AfterText__Container {
+    .Container__ButtonContainer {
+        width: 50%;
+        margin: 0 auto;
+        form {
+            margin: auto;
+            max-width: 30%;
+            min-width: 200px;
+            border: 5px double palevioletred;
+            padding: 1%;
+            input {
+                font-family: "VT323", "Roboto", "Oxygen",
+                "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+                sans-serif;
+                letter-spacing: 2px;
+            }
+            .ButtonContainer__Buttons {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
 }
