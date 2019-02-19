@@ -1,4 +1,4 @@
-  ![an image of the starting screen of study card x](https://ibb.co/F8Ks7fM)
+![alt text](https://i.ibb.co/RQ9hHMm/SCX-Image.png)
   
   *Class Naming
 Nested naming for App.js component example:
