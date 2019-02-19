@@ -1,4 +1,19 @@
-.AfterText__ButtonContainer form {
+.AfterText__Container .Container__ButtonContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+.AfterText__Container .Container__ButtonContainer form {
   margin: auto;
-  max-width: 50%;
+  max-width: 30%;
+  min-width: 200px;
+  border: 5px double palevioletred;
+  padding: 1%;
+}
+.AfterText__Container .Container__ButtonContainer form input {
+  font-family: "VT323", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 2px;
+}
+.AfterText__Container .Container__ButtonContainer form .ButtonContainer__Buttons {
+  display: flex;
+  justify-content: space-between;
 }
