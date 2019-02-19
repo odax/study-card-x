@@ -2,6 +2,9 @@
   width: 50%;
   margin: 0 auto;
 }
+.AfterText__Container .Container__ButtonContainer button {
+  margin: 0 10px;
+}
 .AfterText__Container .Container__ButtonContainer form {
   margin: auto;
   max-width: 30%;
