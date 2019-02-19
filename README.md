@@ -1,3 +1,5 @@
+  ![an image of the starting screen of study card x](https://ibb.co/F8Ks7fM)
+  
   *Class Naming
 Nested naming for App.js component example:
 ```
