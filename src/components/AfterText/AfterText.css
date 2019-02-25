@@ -19,4 +19,9 @@
 .AfterText__Container .Container__ButtonContainer form .ButtonContainer__Buttons {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
+}
+.AfterText__Container .Container__ButtonContainer form .ButtonContainer__Buttons Button {
+  font-size: .64rem;
+  padding: 0 10px;
 }

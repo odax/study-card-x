@@ -12,7 +12,10 @@ export default class AfterText extends Component {
     btn2next: "",
     visibleButtons: "",
     username: "",
-    password: ""
+    password: "",
+    usernameSignup: "",
+    password1Signup: "",
+    password2Signup: ""
   };
 
   componentDidUpdate = () => {
@@ -73,11 +76,14 @@ export default class AfterText extends Component {
   HandleUpdateContext = (item1, item2) => {
     this.props.contextState.HandleChangeState(item1, item2);
   };
-  handleLoginChange = name => ({ target: { value } }) => {
+  handleStateChange = name => ({ target: { value } }) => {
     this.setState({ [name]: value });
   };
   loginHandler = event => {
     //will call axios function in context state, passing in this.state.password/username
+  };
+  signupHandler = event => {
+    //will call axios in context state, passing in credentials
   };
   render() {
     let newItems;
@@ -145,12 +151,56 @@ export default class AfterText extends Component {
               <input
                 type="text"
                 placeholder="username"
-                onChange={this.handleLoginChange("username")}
+                onChange={this.handleStateChange("username")}
               />
               <input
                 type="password"
                 placeholder="password"
-                onChange={this.handleLoginChange("password")}
+                onChange={this.handleStateChange("password")}
+              />
+              <div className="ButtonContainer__Buttons">
+                <button
+                  type="submit"
+                  className="waves-effect waves-light btn-small"
+                >
+                  {this.state.btn1}
+                </button>
+                <button
+                  className="waves-effect waves-light btn-small"
+                  onClick={() => {
+                    this.handleButtonClick(this.state.btn2next);
+                  }}
+                >
+                  {this.state.btn2}
+                </button>
+              </div>
+            </form>
+          </div>
+        );
+        break;
+      case "signup":
+        newItems = (
+          <div
+            className="Container__ButtonContainer"
+            style={{
+              visibility: this.state.visibleButtons ? "visible" : "hidden"
+            }}
+          >
+            <form onSubmit={this.signupHandler}>
+              <input
+                type="text"
+                placeholder="username"
+                onChange={this.handleStateChange("usernameSignup")}
+              />
+              <input
+                type="password1"
+                placeholder="password"
+                onChange={this.handleStateChange("password1Signup")}
+              />
+              <input
+                type="password2"
+                placeholder="repeat password"
+                onChange={this.handleStateChange("password2Signup")}
               />
               <div className="ButtonContainer__Buttons">
                 <button
