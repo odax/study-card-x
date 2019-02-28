@@ -10,6 +10,11 @@ const BACKEND_URL = 'placeholder'; //will be added
 //create new context
 const AppContext = React.createContext();
 
+//default context state below
+//visible button - turned true after animation is complete
+//currentIndentity - basically the room (determine which text, buttons, components are rendered)
+//initializing - there is a conditional that checks this to know when to render initial identity
+//skip - will be turned true in order to skip animation, but reset to false right after
 export class AppContextProvider extends Component {
   state = {
     authenticated: false,
@@ -44,6 +49,7 @@ export class AppContextProvider extends Component {
       name: name
     });
   };
+  //above methods are obsolete and features should be refactored with generic state changer below
 
   //generic context state changer
   handleChangeState = (stateKey, value) => {
